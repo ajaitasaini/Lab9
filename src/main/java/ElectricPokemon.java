@@ -34,11 +34,11 @@ public class ElectricPokemon extends Pokemon {
      * <p>
      * Requirements for a specialty attack: <br>
      *  - The normal attack wasn't already fatal <br>
-     *  - The type of the opponent pokemon is not ELECTRIC <br>
+     *  - The type of the opponent pokemon is not ELECTRIC <br> DONE
      *  - The probability of the specialty attack is greater than
-     *    the next random value <br>
+     *    the next random value <br> DONE
      *  - We should print out the specialty attack used <br>
-     *  - Opponent's HP goes to 0 <br>
+     *  - Opponent's HP goes to 0 <br> DONE
      *  - Returns true that the opponent has been defeated and game is over <br>
      *
      * Hint: Math.random() is static, or you can use the random import <br>
@@ -59,6 +59,15 @@ public class ElectricPokemon extends Pokemon {
      * Implement this.
      */
     public boolean attack(final Pokemon opponent) {
+        if (this.getHitPoints() > 1
+                && opponent.pokeType != pokeType.ELECTRIC
+                && specialtyProbability > Math.random()) {
+            System.out.println(this.getName() + " executes a speciality attack... "
+                + specialtyAttack);
+            opponent.setHitPoints(0);
+            System.out.println(opponent.getName() + " has been defeated!");
+            return true;
+        }
         return false;
     }
 
